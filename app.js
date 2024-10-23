@@ -67,13 +67,18 @@ class MyApp extends Homey.App
 					// Device not found
 					return null;
 				}
+				let iconURI = device?.iconObj?.url;
+				if (device.iconOverride)
+				{
+					iconURI = `https://my.homey.app/img/devices/${device.iconOverride}.svg`;
+				}
 
-				// Retrieve the cloudUrl
-				const image = await this.homey.images.createImage();
-				// @ts-ignore
-				const url = image.cloudUrl.split('/api/')[0];
-				await image.unregister();
-				return device.iconObj?.url && url ? `${url}${device.iconObj.url}` : null;
+				if (this.logLevel > 0)
+				{
+					this.updateLog(`Device image URL for ${deviceId}:\n${JSON.stringify(device.iconObj, null, 2)}`);
+				}
+
+				return iconURI;
 			}
 			catch (e)
 			{
@@ -172,7 +177,7 @@ class MyApp extends Homey.App
 			}
 			if (this.logLevel > 0)
 			{
-				this.updateLog(`Capabilities for ${deviceId}:\n${JSON.stringify(capabilities, null, 2)}`);
+				this.updateLog(`\nCapabilities for ${deviceId}:\n${JSON.stringify(capabilities, null, 2)}`);
 			}
 
 			return capabilities;
@@ -190,6 +195,8 @@ class MyApp extends Homey.App
 				if (!device)
 				{
 					// Device not found
+					this.error(`Device not found: ${deviceId}`);
+					this.updateLog(`\nDevice not found: ${deviceId}`);
 					return;
 				}
 
@@ -198,6 +205,8 @@ class MyApp extends Homey.App
 				if (!capability)
 				{
 					// Capability not found
+					this.error(`Capability not found: ${deviceId} - ${capabilityId}`);
+					this.updateLog(`\nCapability not found: ${deviceId} - ${capabilityId}`);
 					return;
 				}
 
@@ -223,14 +232,20 @@ class MyApp extends Homey.App
 			{
 				if (this.deviceManager.devices)
 				{
-					return await this.deviceManager.getDeviceById(id);
+					const device = await this.deviceManager.getDeviceById(id);
+					if (this.logLevel > 1)
+					{
+						this.updateLog(`Device:\n${JSON.stringify(device, null, 2)}`);
+					}
+
+					return device;
 				}
 			}
 			catch (e)
 			{
 				this.error('Error getting device', e);
 				this.updateLog(`\nError ${e.message} when getting device ${id}`);
-}
+			}
 		}
 		return undefined;
 	}
@@ -255,6 +270,11 @@ class MyApp extends Homey.App
 	updateLog(Message)
 	{
 		this.diagLog += `\n${Message}`;
+		if (this.diagLog.length > 60000)
+		{
+			this.diagLog = this.diagLog.substr(this.diagLog.length - 60000);
+		}
+
 		this.homey.api.realtime('logupdated', { log: this.diagLog });
 	}
 

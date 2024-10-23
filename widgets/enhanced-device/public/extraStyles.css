@@ -1,17 +1,35 @@
 .alignleft {
 	float: left;
-	margin-top: 15px;
 	margin-bottom: 0px;
-	height: 25px;
 	align-items: center;
 }
 
 .alignright {
 	float: right;
-	margin-top: 15px;
 	margin-bottom: 0px;
-	height: 25px;
 	align-items: center;
+}
+
+.alignleft[dense="false"] {
+	margin-top: 15px;
+	height: 25px;
+}
+
+.alignleft[dense="true"] {
+	line-height: 24px;
+}
+
+.alignright[dense="false"] {
+	margin-top: 15px;
+	height: 25px;
+}
+
+.alignright[dense="true"] {
+	line-height: 24px;
+}
+
+#capabilitiesSection[dense="true"] {
+	padding-top: 6px;
 }
 
 /* The switch - the box around the slider */

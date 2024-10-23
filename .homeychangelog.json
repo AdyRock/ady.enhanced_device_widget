@@ -19,5 +19,8 @@
   },
   "1.0.6": {
 	"en": "Fix capability hiding."
+  },
+  "1.1.0": {
+	"en": "Added ENUM capability type. Merged changes supplied by Markus for adding readonly and dense modes and for fetching custom icons."
   }
 }

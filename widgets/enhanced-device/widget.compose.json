@@ -33,6 +33,22 @@
 				"pl": "Włączona konfiguracja czasu wykonania",
 				"ko": "활성화 된 실행 시간 구성"
 			}
+		},
+		{
+			"id": "readonly",
+			"type": "checkbox",
+			"value": false,
+			"title": {
+				"en": "Read only?"
+			}
+		},
+		{
+			"id": "dense",
+			"type": "checkbox",
+			"value": false,
+			"title": {
+				"en": "Dense Layout?"
+			}
 		}
 	],
 	"api": {
