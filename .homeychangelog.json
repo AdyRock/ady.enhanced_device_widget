@@ -100,5 +100,8 @@
 	},
 	"1.1.26": {
 		"en": "Fixed an issue where the text capabilities changes were not being applied correctly."
+	},
+	"1.1.27": {
+		"en": "Fixed ENUM (dropdown) capability losing its options after a value update, requiring an app restart to restore the selector."
 	}
 }

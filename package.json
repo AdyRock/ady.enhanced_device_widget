@@ -1,6 +1,6 @@
 {
 	"name": "ady.enhanced_device_widget",
-	"version": "1.1.26",
+	"version": "1.1.27",
 	"main": "app.js",
 	"scripts": {
 		"lint": "eslint --ext .js,.ts --ignore-path .gitignore ."

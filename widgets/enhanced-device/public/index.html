@@ -1,6 +1,9 @@
-<html>
+<html lang="en">
 
 <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Enhanced Device Widget</title>
 	<link rel="stylesheet" type="text/css" href="extraStyles.css">
 </head>
 
@@ -111,7 +114,15 @@
 						}
 						else if (typeof (value) === 'string')
 						{
-							document.getElementById(`${capabilityID}`).innerHTML = value;
+							const el = document.getElementById(`${capabilityID}`);
+							if (el && el.tagName === 'SELECT')
+							{
+								el.value = value;
+							}
+							else if (el)
+							{
+								el.innerHTML = value;
+							}
 							refreshHeight();
 						}
 						else
