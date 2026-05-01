@@ -5,6 +5,9 @@
         "logLevel": "로그 레벨"
     },
     "widget": {
-        "noNotifications": "알림 없음"
+        "noNotifications": "알림 없음",
+        "device": "장치",
+        "edit": "편집",
+        "selectDeviceInSettings": "이 위젯을 사용하려면 위젯 설정에서 장치를 선택하세요."
     }
 }

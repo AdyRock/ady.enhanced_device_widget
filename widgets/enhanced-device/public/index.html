@@ -11,16 +11,17 @@
 		<div class="container">
 			<div class="left-section">
 				<img id="deviceIcon" src="homey-logo.png" alt="Device Icon" class="device-image-class" />
-				<div id="deviceName" class="homey-text-bold">Device</div>
+				<div id="deviceName" class="homey-text-bold" data-i18n="widget.device"></div>
 			</div>
 			<div id="enableEdit" class="right-section">
-				<label for="editMode" class="homey-font-size-default">Edit</label>
+				<label id="editModeLabel" for="editMode" class="homey-font-size-default" data-i18n="widget.edit">Edit</label>
 				<input id="editMode" type="checkbox" onclick="onChangeEditMode()">
 			</div>
 		</div>
 		<div id="headerSeperator">
 			<hr>
 		</div>
+		<div id="noDeviceMessage" class="no-device-message hidden homey-font-size-default" data-i18n="widget.selectDeviceInSettings"></div>
 		<div id="capabilitiesSection"></div>
 
 	<script type="text/javascript">
@@ -32,6 +33,22 @@
 		var editEnabled = false;
 		var settings = null;
 
+		function hasConfiguredDevice(widgetSettings)
+		{
+			return !!(widgetSettings && widgetSettings.devices && widgetSettings.devices.id);
+		}
+
+		function renderNoDeviceConfiguredMessage()
+		{
+			document.getElementById('deviceIcon').src = 'homey-logo.png';
+			document.getElementById('enableEdit').style.display = 'none';
+			document.getElementById('headerSeperator').style.display = 'none';
+			document.getElementById('capabilitiesSection').innerHTML = '';
+			document.getElementById('noDeviceMessage').style.display = 'block';
+			refreshHeight();
+			Homey.ready();
+		}
+
 		function onHomeyReady(Homey)
 		{
 			widgetId = Homey.getWidgetInstanceId();
@@ -39,12 +56,20 @@
 			// View the settings the user provided if your widget has settings.
 			settings = Homey.getSettings();
 
+			if (!hasConfiguredDevice(settings))
+			{
+				renderNoDeviceConfiguredMessage();
+				return;
+			}
+
+			document.getElementById('noDeviceMessage').style.display = 'none';
+
 			// Set the background color or gradient based on the settings
-			if (settings.fillType === 'solid')
+			if (settings && settings.fillType === 'solid')
 			{
 				document.body.style.background = settings.color1;
 			}
-			else if (settings.fillType !== 'system')
+			else if (settings && settings.fillType !== 'system')
 			{
 				document.body.style.background = `linear-gradient(${settings.fillType}, ${settings.color1}, ${settings.color2})`;
 			}
@@ -77,6 +102,11 @@
 			Homey.on('updateWidget', function ({ deviceId, capabilityID, value })
 			{
 				settings = Homey.getSettings();
+				if (!hasConfiguredDevice(settings))
+				{
+					return;
+				}
+
 				if (settings.devices.id === deviceId)
 				{
 					if (capabilityDisabled[capabilityID])
@@ -144,6 +174,11 @@
 
 			// View the settings the user provided if your widget has settings.
 			settings = Homey.getSettings();
+			if (!hasConfiguredDevice(settings))
+			{
+				renderNoDeviceConfiguredMessage();
+				return;
+			}
 
 			const denseLayout = settings.dense;
 			let heightAdd = denseLayout ? 25 : 30;
@@ -495,6 +530,11 @@
 
 		function numberSlide(capabilityId)
 		{
+			if (!hasConfiguredDevice(settings) || !settings.devices.capabilitiesObj || !settings.devices.capabilitiesObj[capabilityId])
+			{
+				return;
+			}
+
 			const element = document.getElementById(`${capabilityId}_slide`);
 			let value = parseFloat(element.value);
 

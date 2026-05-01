@@ -103,5 +103,8 @@
 	},
 	"1.1.27": {
 		"en": "Fixed ENUM (dropdown) capability losing its options after a value update, requiring an app restart to restore the selector."
+	},
+	"1.1.28": {
+		"en": "Added a no-device check in the Enhanced Device widget and a localized message prompting users to select a device in widget settings."
 	}
 }

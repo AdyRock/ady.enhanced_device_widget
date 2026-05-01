@@ -253,3 +253,13 @@ input:checked+.slider:before {
 	cursor: pointer;
 	transition: background-color 0.3s ease;
 }
+
+.no-device-message {
+	margin-top: 8px;
+	line-height: 1.4;
+	opacity: 0.85;
+}
+
+.hidden {
+	display: none;
+}

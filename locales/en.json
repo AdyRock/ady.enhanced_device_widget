@@ -5,6 +5,9 @@
 		"logLevel": "Log Level"
 	},
 	"widget": {
-		"noNotifications": "No Notifications"
+		"noNotifications": "No Notifications",
+		"device": "Device",
+		"edit": "Edit",
+		"selectDeviceInSettings": "Select a device in widget settings to use this widget."
 	}
 }

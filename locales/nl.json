@@ -5,6 +5,9 @@
         "logLevel": "Logniveau"
     },
     "widget": {
-        "noNotifications": "Geen meldingen"
+        "noNotifications": "Geen meldingen",
+        "device": "Apparaat",
+        "edit": "Bewerken",
+        "selectDeviceInSettings": "Selecteer een apparaat in de widgetinstellingen om deze widget te gebruiken."
     }
 }

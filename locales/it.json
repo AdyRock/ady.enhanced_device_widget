@@ -5,6 +5,9 @@
         "logLevel": "Livello di registro"
     },
     "widget": {
-        "noNotifications": "Nessuna notifica"
+        "noNotifications": "Nessuna notifica",
+        "device": "Dispositivo",
+        "edit": "Modifica",
+        "selectDeviceInSettings": "Seleziona un dispositivo nelle impostazioni del widget per usare questo widget."
     }
 }

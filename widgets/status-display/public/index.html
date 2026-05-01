@@ -1,11 +1,15 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Status Display Widget</title>
 	<link rel="stylesheet" type="text/css" href="extraStyles.css">
 </head>
 
 <body class="homey-widget">
-	<div id="widgetContent" style="display:none">
+	<div id="widgetContent">
 		<div id="titleContainer" class="container1">
 			<div id="title" class="homey-text-bold">Title</div>
 		</div>
@@ -19,7 +23,7 @@
 			<div id="closeX" class="cross">&#x2715;</div>
 		</div>
 	</div>
-	<div id="widgetNoContent" style="display:block">
+	<div id="widgetNoContent">
 		<div id="noStatus" class="homey-text-normal" data-i18n="widget.noNotifications"></div>
 		<img id="refresh2" src="refresh.svg" alt="Refresh" class="refresh" />
 	</div>

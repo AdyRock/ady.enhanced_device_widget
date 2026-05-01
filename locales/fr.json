@@ -5,6 +5,9 @@
         "logLevel": "Niveau de Journal"
     },
     "widget": {
-        "noNotifications": "Pas de Notifications"
+        "noNotifications": "Pas de Notifications",
+        "device": "Appareil",
+        "edit": "Modifier",
+        "selectDeviceInSettings": "Sélectionnez un appareil dans les paramètres du widget pour utiliser ce widget."
     }
 }

@@ -5,6 +5,9 @@
         "logLevel": "Poziom dziennika"
     },
     "widget": {
-        "noNotifications": "Brak powiadomień"
+        "noNotifications": "Brak powiadomień",
+        "device": "Urządzenie",
+        "edit": "Edytuj",
+        "selectDeviceInSettings": "Wybierz urządzenie w ustawieniach widżetu, aby używać tego widżetu."
     }
 }

@@ -5,6 +5,9 @@
         "logLevel": "Protokollstufe"
     },
     "widget": {
-        "noNotifications": "Keine Benachrichtigungen"
+        "noNotifications": "Keine Benachrichtigungen",
+        "device": "Gerät",
+        "edit": "Bearbeiten",
+        "selectDeviceInSettings": "Wähle in den Widget-Einstellungen ein Gerät aus, um dieses Widget zu nutzen."
     }
 }
