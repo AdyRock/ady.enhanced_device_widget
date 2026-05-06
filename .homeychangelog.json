@@ -106,5 +106,8 @@
 	},
 	"1.1.28": {
 		"en": "Added a no-device check in the Enhanced Device widget and a localized message prompting users to select a device in widget settings."
+	},
+	"1.1.29": {
+		"en": "Rolled back changes to the Status widget as they affected some appearances of custom HTML."
 	}
 }
