@@ -4,14 +4,6 @@
 	initial-value: 5;
 }
 
-#widgetContent {
-	display: none;
-}
-
-#widgetNoContent {
-	display: block;
-}
-
 /* Custom CSS for Device Image */
 .device-image-class {
 	margin-right: 0px;
