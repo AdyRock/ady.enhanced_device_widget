@@ -109,5 +109,8 @@
 	},
 	"1.1.29": {
 		"en": "Rolled back changes to the Status widget as they affected some appearances of custom HTML."
+	},
+	"1.1.30": {
+		"en": "Rolled back changes to the Status widget as they affected some appearances of custom HTML."
 	}
 }
